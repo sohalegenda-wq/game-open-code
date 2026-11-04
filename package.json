@@ -1,0 +1,7 @@
+{
+  "name": "the-observer-signal-lost", "version": "1.0.0", "private": true,
+  "description": "Offline Android survival game — The Observer: Signal Lost",
+  "scripts": {"sync": "cap sync android", "build:apk": "cap sync android && cd android && ./gradlew assembleDebug", "preview": "python3 -m http.server 8080 --directory www"},
+  "dependencies": {"@capacitor/core": "6.2.1", "@capacitor/android": "6.2.1"},
+  "devDependencies": {"@capacitor/cli": "6.2.1"}, "engines": {"node": ">=18"}
+}

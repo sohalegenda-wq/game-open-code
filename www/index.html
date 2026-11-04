@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0c">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; media-src 'none'; object-src 'none'; base-uri 'none'">
+  <title>The Observer: Signal Lost</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <div id="START" class="screen active splash">
+    <div class="intro">
+      <p class="eyebrow">КРОТ-7 / КАНАЛ 01</p>
+      <h1>THE OBSERVER<span>SIGNAL LOST</span></h1>
+      <div class="separator"></div>
+      <p class="story">Объект Крот-7. Авария на глубине 240 метров. Связь с поверхностью потеряна. Марк выжил. Камеры работают через раз. Ты — единственный, кто видит картину целиком. Не подведи его.</p>
+      <p id="progressHint" class="muted">ГЛУБИНА −240 М / СВЯЗЬ ОЖИДАЕТ</p>
+      <button id="startButton">НАЧАТЬ СВЯЗЬ</button>
+    </div>
+  </div>
+  <div id="PLAYING" class="screen">
+    <section id="monitor" class="monitor" aria-label="Монитор наблюдения">
+      <header class="monitor-header"><span id="zoneTitle"></span><div id="radar" class="radar" aria-label="Радар"></div></header>
+      <div id="mazeFrame" class="maze-frame"><div id="maze" class="maze" role="img" aria-label="Лабиринт: Марк, монстр и выход"></div></div>
+      <div class="terminal-shell"><div class="terminal-label">● КАНАЛ МАРКА <span id="signalStatus">СИГНАЛ СЛАБЫЙ</span></div><div id="terminal" class="terminal" role="log" aria-live="off"></div></div>
+    </section>
+    <section class="console" aria-label="Пульт управления">
+      <div class="meters">
+        <div class="meter-row"><label for="energy">ЭНЕРГИЯ</label><div id="energy" class="meter" role="progressbar" aria-label="Энергия" aria-valuemin="0" aria-valuemax="100"><div id="energyFill"></div></div><span id="energyText">100%</span></div>
+        <div class="meter-row stress-row"><label for="stress">СТРЕСС</label><div id="stress" class="meter" role="progressbar" aria-label="Стресс" aria-valuemin="0" aria-valuemax="100"><div id="stressFill"></div></div><span id="stressText">0%</span></div>
+      </div>
+      <div class="controls">
+        <button id="lightButton" aria-label="Свет: удерживайте, чтобы отпугнуть монстра" aria-pressed="false">СВЕТ<span>ДЕРЖАТЬ</span></button>
+        <div class="dpad" aria-label="Направление движения">
+          <button data-direction="up" class="up" aria-label="Вверх">↑</button>
+          <button data-direction="left" class="left" aria-label="Влево">←</button>
+          <div class="dpad-center" aria-hidden="true">М</div>
+          <button data-direction="right" class="right" aria-label="Вправо">→</button>
+          <button data-direction="down" class="down" aria-label="Вниз">↓</button>
+        </div>
+      </div>
+    </section>
+    <div id="pauseNotice" class="pause-notice" hidden>СВЯЗЬ ПРИОСТАНОВЛЕНА</div>
+  </div>
+  <div id="DEATH" class="screen splash death">
+    <p class="eyebrow">КАНАЛ ОБОРВАН</p><h2>ВЫ НЕ УСПЕЛИ</h2>
+    <p>Связь потеряна. Попробуй снова.</p><button id="retryButton">ЗАНОВО</button>
+  </div>
+  <div id="VICTORY" class="screen splash victory">
+    <p class="eyebrow">СВЯЗЬ ВОССТАНОВЛЕНА</p><h2>СИГНАЛ ПОЙМАН</h2>
+    <p id="victoryLine" class="outcome-line"></p>
+    <div id="statistics" class="statistics"></div><button id="nextButton">СЛЕДУЮЩАЯ ЗОНА</button>
+  </div>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
